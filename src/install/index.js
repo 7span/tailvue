@@ -1,9 +1,10 @@
-import defaultOptions from "./options";
+const defaultOptions = require("./options");
 import components from "./components";
 import icons from "./icons";
+import { merge } from "lodash-es";
 
 const install = (Vue, options) => {
-  const mergedOptions = Object.assign(defaultOptions, options);
+  const mergedOptions = merge(defaultOptions, options);
 
   //Provide Options
   Vue.mixin({

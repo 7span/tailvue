@@ -40,12 +40,17 @@ export default {
       return values.align.includes(value);
     },
   },
-  label: String,
-  icon: String,
-  loading: Boolean,
-  square: Boolean,
   type: {
     type: String,
     default: "button",
   },
+  tag: {
+    type: String,
+    default: "button",
+  },
+  label: String,
+  icon: String,
+  loading: Boolean,
+  square: Boolean,
+  disabled: Boolean,
 };

@@ -1,12 +1,14 @@
 <template>
-  <button
-    class="button items-center select-none cursor-pointer relative"
+  <component
+    v-bind="$attrs"
+    :is="tag"
+    class="button items-center select-none relative"
     :class="classList"
   >
     <!-- Loading -->
     <tv-icon
       v-if="loading"
-      :size="iconSizes[size]"
+      :size="OPTIONS.fieldIconSizes[size]"
       name="mi-loading"
       class="button__loading absolute loading inset-0 m-auto"
     />
@@ -14,7 +16,7 @@
     <!-- Icon -->
     <tv-icon
       v-if="icon"
-      :size="iconSizes[size]"
+      :size="OPTIONS.fieldIconSizes[size]"
       :name="icon"
       class="button__icon"
       :class="iconClassList"
@@ -26,26 +28,15 @@
         {{ label }}
       </slot>
     </span>
-  </button>
+  </component>
 </template>
 
 <script>
 export default {
-  name: "tv-button",
+  inheritAttrs: false,
   props: require("./props").default,
   inject: ["OPTIONS"],
 
-  data() {
-    return {
-      iconSizes: {
-        xs: 14,
-        sm: 18,
-        md: 24,
-        lg: 28,
-        xl: 32,
-      },
-    };
-  },
   computed: {
     classList() {
       const classes = [
@@ -55,6 +46,7 @@ export default {
         ...this.prop__shape,
         ...this.props__square,
         ...this.prop__align,
+        ...this.props__disabled,
       ];
 
       return classes;
@@ -77,6 +69,14 @@ export default {
         classes.push(...options[this.align]);
       }
       return classes;
+    },
+
+    props__disabled() {
+      const options = {
+        true: ["cursor-not-allowed", "opacity-75"],
+        false: ["cursor-pointer"],
+      };
+      return options[String(this.disabled)];
     },
 
     prop__align() {
@@ -178,13 +178,14 @@ export default {
     },
 
     props__square() {
+      const sizes = this.OPTIONS.fieldSizes;
       const options = {
         true: {
-          xs: ["w-6"],
-          sm: ["w-8"],
-          md: ["w-10"],
-          lg: ["w-12"],
-          xl: ["w-16"],
+          xs: [`w-${sizes.xs}`],
+          sm: [`w-${sizes.sm}`],
+          md: [`w-${sizes.md}`],
+          lg: [`w-${sizes.lg}`],
+          xl: [`w-${sizes.xl}`],
         },
         false: {
           xs: ["px-3"],
@@ -201,12 +202,13 @@ export default {
     },
 
     prop__size() {
+      const sizes = this.OPTIONS.fieldSizes;
       const options = {
-        xs: ["text-xs", "h-6"],
-        sm: ["text-sm", "h-8"],
-        md: ["text-md", "h-10"],
-        lg: ["text-lg", "h-12"],
-        xl: ["text-lg", "h-16"],
+        xs: ["text-xs", `h-${sizes.xs}`],
+        sm: ["text-sm", `h-${sizes.sm}`],
+        md: ["text-md", `h-${sizes.md}`],
+        lg: ["text-lg", `h-${sizes.lg}`],
+        xl: ["text-lg", `h-${sizes.xl}`],
       };
 
       return options[this.size];

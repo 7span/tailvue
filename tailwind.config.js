@@ -1,10 +1,12 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const tailVueOptions = require("./src/options");
+const whitelist = require("./src/install/whitelist");
 
 module.exports = {
   purge: {
-    content: ["./src/**/*.html", "./src/**/*.vue", "./src/**/*.jsx"],
+    content: ["./src/**/*.html", "./src/**/*.vue"],
     options: {
-      whitelist: ["bg-red-500"],
+      whitelist: whitelist(tailVueOptions),
     },
   },
   theme: {

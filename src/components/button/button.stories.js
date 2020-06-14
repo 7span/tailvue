@@ -47,6 +47,9 @@ export const Default = () => ({
         display: "radio",
       }),
     },
+    disabled: {
+      default: boolean("Disabled", false),
+    },
   },
   template: `<tv-button v-bind="{${Object.keys(props)}}"/>`,
 });
