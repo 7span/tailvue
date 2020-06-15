@@ -1,8 +1,8 @@
 <template>
-  <div class="field">
-    <label class="field__label mb-1 inline-block" :class="labelClassList">{{
-      label
-    }}</label>
+  <div class="field" ref="field">
+    <label class="field__label mb-1 inline-block" :class="labelClassList">
+      {{ label }}
+    </label>
     <div class="field__set flex rounded-md" :class="setClassList">
       <slot></slot>
     </div>
@@ -14,6 +14,14 @@
 export default {
   props: require("./props").default,
   inject: ["OPTIONS"],
+  provide() {
+    return {
+      FIELD: {
+        size: this.fieldSize,
+        color: this.fieldColor,
+      },
+    };
+  },
   computed: {
     setClassList() {
       const classes = [`bg-${this.fieldColor}-200`, `h-${this.fieldSize}`];

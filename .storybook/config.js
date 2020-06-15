@@ -2,6 +2,9 @@ import Vue from "vue";
 import { configure, addDecorator, addParameters } from "@storybook/vue";
 import { withPaddings } from "storybook-addon-paddings";
 
+//Register 3rd Party Plugins
+import "../src/plugins";
+
 //Register Plugin
 import TailVue from "../src/install";
 Vue.use(TailVue);

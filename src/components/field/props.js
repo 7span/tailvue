@@ -9,4 +9,10 @@ export default {
     type: String,
     default: "gray",
   },
+  name: {
+    type: String,
+  },
+  loading: {
+    type: Boolean,
+  },
 };

@@ -4,6 +4,7 @@ import "@/css/style.scss";
 import TailVue from "./install";
 import tailVueOptions from "./options";
 import VueRouter from "vue-router";
+import "./plugins";
 
 Vue.use(VueRouter);
 Vue.use(TailVue, tailVueOptions);

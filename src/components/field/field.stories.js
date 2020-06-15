@@ -29,7 +29,7 @@ export const Default = () => ({
     },
   },
   template: `<tv-field v-bind="{${Object.keys(props)}}">
-    <tv-field-item icon="mi-vuejs" />
+    <tv-field-icon name="mi-vuejs" />
     <tv-textbox/>
   </tv-field>`,
 });
