@@ -6,4 +6,7 @@ export default {
   "field-validate": require("../components/field-validate/Component").default,
   "field-icon": require("../components/field-icon/Component").default,
   textbox: require("../components/textbox/Component").default,
+  loader: require("../components/loader/Component").default,
+  shimmer: require("../components/shimmer/Component").default,
+  select: require("../components/select/Component").default,
 };

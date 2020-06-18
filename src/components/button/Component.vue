@@ -6,11 +6,11 @@
     :class="classList"
   >
     <!-- Loading -->
-    <tv-icon
+    <tv-loader
       v-if="loading"
       :size="OPTIONS.fieldIconSizes[size]"
       name="mi-loading"
-      class="button__loading absolute loading inset-0 m-auto"
+      class="button__loader absolute inset-0 m-auto"
     />
 
     <!-- Icon -->
@@ -46,7 +46,7 @@ export default {
         ...this.prop__shape,
         ...this.props__square,
         ...this.prop__align,
-        ...this.props__disabled,
+        ...this.props__disabled
       ];
 
       return classes;
@@ -64,7 +64,7 @@ export default {
           "": ["mr-2"],
           left: ["mr-2"],
           right: ["ml-2"],
-          "icon-right": ["ml-2"],
+          "icon-right": ["ml-2"]
         };
         classes.push(...options[this.align]);
       }
@@ -74,7 +74,7 @@ export default {
     props__disabled() {
       const options = {
         true: ["cursor-not-allowed", "opacity-75"],
-        false: ["cursor-pointer"],
+        false: ["cursor-pointer"]
       };
       return options[String(this.disabled)];
     },
@@ -85,7 +85,7 @@ export default {
         "": ["justify-center"],
         left: ["justify-start"],
         right: ["justify-start", "flex-row-reverse"],
-        "icon-right": ["flex-row-reverse", "justify-between"],
+        "icon-right": ["flex-row-reverse", "justify-between"]
       };
       return options[this.align];
     },
@@ -93,7 +93,7 @@ export default {
     prop__full() {
       const options = {
         true: ["flex", "w-full"],
-        false: ["inline-flex"],
+        false: ["inline-flex"]
       };
       return options[String(this.full)];
     },
@@ -111,7 +111,7 @@ export default {
             outline: [],
             muted: [],
             clearDark: [],
-            clearLight: [],
+            clearLight: []
           };
           break;
 
@@ -124,10 +124,10 @@ export default {
               `text-black`,
               `bg-opacity-25`,
               `hover:bg-opacity-100`,
-              `hover:text-white`,
+              `hover:text-white`
             ],
             clearDark: [],
-            clearLight: [],
+            clearLight: []
           };
           break;
         case "white":
@@ -139,10 +139,10 @@ export default {
               `text-white`,
               `bg-opacity-25`,
               `hover:bg-opacity-100`,
-              `hover:text-black`,
+              `hover:text-black`
             ],
             clearDark: [],
-            clearLight: [],
+            clearLight: []
           };
           break;
         default:
@@ -152,15 +152,15 @@ export default {
               `border-2`,
               `text-${color}-500`,
               `border-${color}-400`,
-              `hover:bg-${color}-100`,
+              `hover:bg-${color}-100`
             ],
             muted: [
               `bg-${color}-100`,
               `text-${color}-500`,
-              `hover:text-${color}-700`,
+              `hover:text-${color}-700`
             ],
             clearLight: [`text-gray-300`, `hover:text-${color}-500`],
-            clearDark: [`text-gray-700`, `hover:text-${color}-500`],
+            clearDark: [`text-gray-700`, `hover:text-${color}-500`]
           };
       }
 
@@ -172,7 +172,7 @@ export default {
         rounded: ["rounded-md"],
         flat: [],
         pill: ["rounded-full"],
-        circle: ["rounded-full"],
+        circle: ["rounded-full"]
       };
       return options[this.shape];
     },
@@ -185,15 +185,15 @@ export default {
           sm: [`w-${sizes.sm}`],
           md: [`w-${sizes.md}`],
           lg: [`w-${sizes.lg}`],
-          xl: [`w-${sizes.xl}`],
+          xl: [`w-${sizes.xl}`]
         },
         false: {
           xs: ["px-3"],
           sm: ["px-4"],
           md: ["px-6"],
           lg: ["px-8"],
-          xl: ["px-10"],
-        },
+          xl: ["px-10"]
+        }
       };
 
       const classes = options[String(this.square)][this.size];
@@ -208,11 +208,11 @@ export default {
         sm: ["text-sm", `h-${sizes.sm}`],
         md: ["text-md", `h-${sizes.md}`],
         lg: ["text-lg", `h-${sizes.lg}`],
-        xl: ["text-lg", `h-${sizes.xl}`],
+        xl: ["text-lg", `h-${sizes.xl}`]
       };
 
       return options[this.size];
-    },
-  },
+    }
+  }
 };
 </script>

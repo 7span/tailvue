@@ -10,9 +10,13 @@ export default {
   inject: ["OPTIONS", "FIELD"],
   computed: {
     classList() {
-      const classes = [`w-${this.FIELD.size}`, `text-${this.FIELD.color}-600`];
+      const classes = [
+        `w-${this.FIELD.sizeValue}`,
+        `h-${this.FIELD.sizeValue}`,
+        `text-${this.FIELD.color}-600`
+      ];
       return classes;
-    },
-  },
+    }
+  }
 };
 </script>

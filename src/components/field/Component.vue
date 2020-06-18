@@ -1,10 +1,15 @@
 <template>
   <div class="field" ref="field">
-    <label class="field__label mb-1 inline-block" :class="labelClassList">
+    <label
+      v-if="label"
+      class="field__label mb-1 inline-block"
+      :class="labelClassList"
+    >
       {{ label }}
     </label>
-    <div class="field__set flex rounded-md" :class="setClassList">
-      <slot></slot>
+    <div class="field__set relative flex rounded-md" :class="setClassList">
+      <tv-shimmer class="rounded-md" v-if="loading" />
+      <slot v-else></slot>
     </div>
     <p class="field__note text-sm mt-1" :class="noteClassList">{{ note }}</p>
   </div>
@@ -17,9 +22,11 @@ export default {
   provide() {
     return {
       FIELD: {
-        size: this.fieldSize,
+        size: this.size,
+        sizeValue: this.fieldSize,
         color: this.fieldColor,
-      },
+        name: this.name
+      }
     };
   },
   computed: {
@@ -47,7 +54,7 @@ export default {
     fieldSize() {
       const sizes = this.OPTIONS.fieldSizes;
       return sizes[this.size];
-    },
-  },
+    }
+  }
 };
 </script>
