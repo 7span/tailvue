@@ -2,7 +2,7 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 import props from "./props";
 
 export default {
-  title: "FieldValidate",
+  title: "tv-field-validate",
   decorators: [withKnobs],
 };
 
@@ -18,7 +18,6 @@ export const Default = () => ({
     },
   },
   template: `<tv-field-validate label="Email" v-bind="{${Object.keys(props)}}">
-    <tv-field-icon name="mi-vuejs" />
     <tv-textbox v-model="value"/>
   </tv-field-validate>`,
 });

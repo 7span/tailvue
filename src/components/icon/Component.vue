@@ -15,11 +15,10 @@ export default {
   props: require("./props").default,
   computed: {
     iconStyle() {
-      const style = {
+      return {
         width: this.size + "px",
         height: this.size + "px",
       };
-      return style;
     },
   },
 };

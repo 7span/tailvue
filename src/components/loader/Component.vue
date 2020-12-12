@@ -1,5 +1,5 @@
 <template>
-  <tv-icon :size="size" name="mi-loading" class="loading" />
+  <tv-icon :size="size" name="vmdi-loading" class="loading" />
 </template>
 
 <script>

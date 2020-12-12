@@ -1,22 +1,17 @@
 <template>
-  <component
-    v-bind="$attrs"
-    :is="tag"
-    class="button items-center select-none relative"
-    :class="classList"
-  >
+  <component v-bind="$attrs" :is="tag" class="button" :class="classList">
     <!-- Loading -->
     <tv-loader
       v-if="loading"
-      :size="OPTIONS.fieldIconSizes[size]"
-      name="mi-loading"
-      class="button__loader absolute inset-0 m-auto"
+      :size="OPTIONS.field.iconSizes[size]"
+      name="vmdi-loading"
+      class="button__loader"
     />
 
     <!-- Icon -->
     <tv-icon
       v-if="icon"
-      :size="OPTIONS.fieldIconSizes[size]"
+      :size="OPTIONS.field.iconSizes[size]"
       :name="icon"
       class="button__icon"
       :class="iconClassList"
@@ -24,19 +19,19 @@
 
     <!-- Label -->
     <span v-if="!square" class="button__label" :class="labelClassList">
-      <slot>
-        {{ label }}
-      </slot>
+      <slot>{{ label }}</slot>
     </span>
   </component>
 </template>
 
 <script>
+import dc from "./classlist.js";
+
 export default {
+  name: "tv-button",
   inheritAttrs: false,
   props: require("./props").default,
   inject: ["OPTIONS"],
-
   computed: {
     classList() {
       const classes = [
@@ -46,121 +41,128 @@ export default {
         ...this.prop__shape,
         ...this.props__square,
         ...this.prop__align,
-        ...this.props__disabled
+        ...this.prop__disabled,
       ];
 
       return classes;
     },
 
     labelClassList() {
-      return [this.loading ? "opacity-0" : null];
+      return this.loading ? ["opacity-0"] : [];
     },
 
     iconClassList() {
       const classes = [];
-      if (this.loading) classes.push("opacity-0");
+      if (this.loading) {
+        classes.push("opacity-0");
+      }
       if (!this.square) {
         const options = {
-          "": ["mr-2"],
+          center: ["mr-2"],
           left: ["mr-2"],
           right: ["ml-2"],
-          "icon-right": ["ml-2"]
+          "icon-right": ["ml-2"],
         };
         classes.push(...options[this.align]);
       }
       return classes;
     },
 
-    props__disabled() {
-      const options = {
-        true: ["cursor-not-allowed", "opacity-75"],
-        false: ["cursor-pointer"]
-      };
-      return options[String(this.disabled)];
+    prop__disabled() {
+      if (this.disabled) {
+        return ["cursor-not-allowed", "opacity-75"];
+      } else {
+        return ["cursor-pointer"];
+      }
     },
 
     prop__align() {
-      if (this.square) return [];
-      const options = {
-        "": ["justify-center"],
-        left: ["justify-start"],
-        right: ["justify-start", "flex-row-reverse"],
-        "icon-right": ["flex-row-reverse", "justify-between"]
-      };
-      return options[this.align];
+      if (this.square) {
+        return [];
+      } else {
+        const options = {
+          center: ["justify-center"],
+          left: ["justify-start"],
+          right: ["justify-start", "flex-row-reverse"],
+          "icon-right": ["flex-row-reverse", "justify-between"],
+        };
+        return options[this.align];
+      }
     },
 
     prop__full() {
       const options = {
         true: ["flex", "w-full"],
-        false: ["inline-flex"]
+        false: ["inline-flex"],
       };
       return options[String(this.full)];
     },
 
     prop__theme() {
-      const color = this.OPTIONS.colors[this.color];
+      const color = this.color;
       let options;
 
       switch (color) {
-        case null:
-        case undefined:
-        case "":
+        case "none":
           options = {
             solid: [],
             outline: [],
             muted: [],
             clearDark: [],
-            clearLight: []
+            clearLight: [],
           };
           break;
 
         case "black":
           options = {
-            solid: [`text-white`, `bg-black`],
-            outline: [`border-2`, `text-black`, `border-black`],
+            solid: ["text-white", "bg-black"],
+            outline: ["border-2", "text-black", "border-black"],
             muted: [
-              `bg-black`,
-              `text-black`,
-              `bg-opacity-25`,
-              `hover:bg-opacity-100`,
-              `hover:text-white`
+              "bg-black",
+              "text-black",
+              "bg-opacity-25",
+              "hover:bg-opacity-100",
+              "hover:text-white",
             ],
             clearDark: [],
-            clearLight: []
+            clearLight: [],
           };
           break;
         case "white":
           options = {
-            solid: [`text-black`, `bg-white`],
-            outline: [`border-2`, `text-white`, `border-white`],
+            solid: ["text-black", "bg-white"],
+            outline: ["border-2", "text-white", "border-white"],
             muted: [
-              `bg-white`,
-              `text-white`,
-              `bg-opacity-25`,
-              `hover:bg-opacity-100`,
-              `hover:text-black`
+              "bg-white",
+              "text-white",
+              "bg-opacity-25",
+              "hover:bg-opacity-100",
+              "hover:text-black",
             ],
             clearDark: [],
-            clearLight: []
+            clearLight: [],
           };
           break;
         default:
           options = {
-            solid: [`text-white`, `bg-${color}-500`, `hover:bg-${color}-600`],
+            solid: [
+              "text-white",
+              dc.bg_x_500[color],
+              dc.hover__bg_x_600[color],
+            ],
             outline: [
-              `border-2`,
-              `text-${color}-500`,
-              `border-${color}-400`,
-              `hover:bg-${color}-100`
+              "border-2",
+              dc.text_x_500[color],
+              dc.border_x_400[color],
+              dc.hover__bg_x_100[color],
             ],
             muted: [
-              `bg-${color}-100`,
-              `text-${color}-500`,
-              `hover:text-${color}-700`
+              dc.bg_x_100[color],
+              dc.text_x_500[color],
+              dc.hover__text_x_700[color],
             ],
-            clearLight: [`text-gray-300`, `hover:text-${color}-500`],
-            clearDark: [`text-gray-700`, `hover:text-${color}-500`]
+            clearLight: ["text-gray-300", dc.hover__text_x_500[color]],
+            clearDark: ["text-gray-700", dc.hover__text_x_500[color]],
           };
       }
 
@@ -172,47 +174,48 @@ export default {
         rounded: ["rounded-md"],
         flat: [],
         pill: ["rounded-full"],
-        circle: ["rounded-full"]
+        circle: ["rounded-full"],
       };
       return options[this.shape];
     },
 
     props__square() {
-      const sizes = this.OPTIONS.fieldSizes;
-      const options = {
-        true: {
-          xs: [`w-${sizes.xs}`],
-          sm: [`w-${sizes.sm}`],
-          md: [`w-${sizes.md}`],
-          lg: [`w-${sizes.lg}`],
-          xl: [`w-${sizes.xl}`]
-        },
-        false: {
-          xs: ["px-3"],
-          sm: ["px-4"],
-          md: ["px-6"],
-          lg: ["px-8"],
-          xl: ["px-10"]
-        }
-      };
-
-      const classes = options[String(this.square)][this.size];
-      if (this.square) classes.push("justify-center");
+      const classes = [];
+      if (this.square) {
+        classes.push("justify-center", this.OPTIONS.field.widths[this.size]);
+      } else {
+        const paddings = {
+          xs: "px-3",
+          sm: "px-4",
+          md: "px-6",
+          lg: "px-8",
+          xl: "px-10",
+        };
+        classes.push(paddings[this.size]);
+      }
       return classes;
     },
 
     prop__size() {
-      const sizes = this.OPTIONS.fieldSizes;
-      const options = {
-        xs: ["text-xs", `h-${sizes.xs}`],
-        sm: ["text-sm", `h-${sizes.sm}`],
-        md: ["text-md", `h-${sizes.md}`],
-        lg: ["text-lg", `h-${sizes.lg}`],
-        xl: ["text-lg", `h-${sizes.xl}`]
+      const textSize = {
+        xs: "text-xs",
+        sm: "text-sm",
+        md: "text-md",
+        lg: "text-lg",
+        xl: "text-lg",
       };
-
-      return options[this.size];
-    }
-  }
+      return [textSize[this.size], this.OPTIONS.field.heights[this.size]];
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.button {
+  @apply inline-flex items-center select-none relative;
+}
+
+.button__loader {
+  @apply absolute inset-0 m-auto;
+}
+</style>

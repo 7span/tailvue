@@ -2,14 +2,14 @@ import { withKnobs, select, number, text, color } from "@storybook/addon-knobs";
 import props from "./props";
 import icons from "../../story/icons";
 export default {
-  title: "Icon",
+  title: "tv-icon",
   decorators: [withKnobs],
 };
 
 export const Default = () => ({
   props: {
     name: {
-      default: select("Name", icons, "mi-vuejs"),
+      default: select("Name", icons, "vmdi-vuejs"),
     },
     size: {
       default: number("Size", props.size.default),

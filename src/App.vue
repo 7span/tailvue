@@ -1,9 +1,6 @@
 <template>
   <div class="demo p-8">
-    <tv-field label="Email" note="Valid emails only please." loading>
-      <tv-field-icon name="mi-vuejs" />
-      <tv-textbox v-model="val" type="email" />
-    </tv-field>
+    <tv-button icon="mi-vuejs" color="primary" label="Hello!" />
   </div>
 </template>
 
@@ -11,8 +8,8 @@
 export default {
   data() {
     return {
-      val: null
+      val: null,
     };
-  }
+  },
 };
 </script>

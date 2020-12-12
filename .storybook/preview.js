@@ -7,12 +7,13 @@ import "../src/plugins";
 
 //Register Plugin
 import TailVue from "../src/install";
-Vue.use(TailVue);
+import options from "../src/options";
+Vue.use(TailVue, options);
 
 //CSS
-import "../src/css/tailwind.min.css";
-import "../src/css/storybook.scss";
-import "../src/css/style.scss";
+import "../src/tailwind/default.css";
+// import "../src/css/storybook.scss";
+// import "../src/css/style.scss";
 
 //Padding
 addDecorator(withPaddings);
@@ -24,4 +25,3 @@ addParameters({
   ],
 });
 
-configure(require.context("../src", true, /\.stories\.js$/), module);

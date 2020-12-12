@@ -1,12 +1,4 @@
 module.exports = {
-  size: ["xs", "sm", "md", "lg", "xl"],
-  color: [
-    "gray",
-    "primary",
-    "secondary",
-    "warning",
-    "info",
-    "success",
-    "danger",
-  ],
+  size: ["sm", "md", "lg"],
+  color: ["gray", "success", "danger"],
 };

@@ -1,7 +1,7 @@
 import { withKnobs, object } from "@storybook/addon-knobs";
 import props from "./props";
 export default {
-  title: "Select",
+  title: "tv-select",
   decorators: [withKnobs],
 };
 
@@ -22,8 +22,11 @@ export const Default = () => ({
   },
   template: `
   <tv-field label="Select">
-    <tv-field-icon name="mi-vuejs"/>
-    <tv-select :options="options"/>
+    <tv-select :options="options">
+      <template #before>
+        <tv-field-icon size="md" name="vmdi-vuejs"/>
+      </template>
+    </tv-select>
   </tv-field>
   `,
 });

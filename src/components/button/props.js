@@ -35,7 +35,7 @@ export default {
   },
   align: {
     type: String,
-    default: "",
+    default: "center",
     validator: (value) => {
       return values.align.includes(value);
     },
@@ -48,9 +48,18 @@ export default {
     type: String,
     default: "button",
   },
+  square: {
+    type: Boolean,
+    default: false,
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   label: String,
   icon: String,
-  loading: Boolean,
-  square: Boolean,
-  disabled: Boolean,
 };

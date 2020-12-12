@@ -31,8 +31,7 @@ export default {
       const classes = [];
       const { invalid, dirty } = this.$refs.field?.flags || {};
       if (invalid && dirty) {
-        const errorColor = this.OPTIONS.colors.danger;
-        classes.push(`text-${errorColor}-600`);
+        classes.push("text-danger-600");
       }
       return classes;
     },

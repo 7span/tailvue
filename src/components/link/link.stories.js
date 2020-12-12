@@ -2,7 +2,7 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 import props from "./props";
 
 export default {
-  title: "Link",
+  title: "tv-link",
   decorators: [withKnobs],
 };
 

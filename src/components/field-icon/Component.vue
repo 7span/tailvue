@@ -1,21 +1,19 @@
+<!-- 
+Field Icons is a child of Field Item.
+Hence all the field related config are taken from parent component.
+-->
 <template>
   <div class="field__icon flex justify-center items-center" :class="classList">
-    <tv-icon :size="OPTIONS.fieldIconSizes[FIELD.size]" :name="name" />
+    <tv-icon :size="$parent.iconSize" :name="name" />
   </div>
 </template>
 
 <script>
 export default {
   props: require("./props").default,
-  inject: ["OPTIONS", "FIELD"],
   computed: {
     classList() {
-      const classes = [
-        `w-${this.FIELD.sizeValue}`,
-        `h-${this.FIELD.sizeValue}`,
-        `text-${this.FIELD.color}-600`
-      ];
-      return classes;
+      return [this.$parent.width, this.$parent.height];
     }
   }
 };

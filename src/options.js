@@ -1,5 +1,5 @@
 module.exports = {
-  colors: {
-    primary: "purple",
+  field: {
+    radius: "rounded-md",
   },
 };

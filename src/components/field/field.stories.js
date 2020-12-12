@@ -4,7 +4,7 @@ import props from "./props";
 import icons from "./../../story/icons";
 
 export default {
-  title: "Field",
+  title: "tv-field",
   decorators: [withKnobs],
 };
 
@@ -15,6 +15,9 @@ export const Default = () => ({
   props: {
     label: {
       default: text("label", "Field", fieldGroup),
+    },
+    name: {
+      default: text("name", "first_name", fieldGroup),
     },
     size: {
       default: select("size", values.size, props.size.default, fieldGroup),
@@ -33,11 +36,10 @@ export const Default = () => ({
       default: boolean("loading", false, fieldGroup),
     },
     fieldIcon: {
-      default: select("name", icons, "mi-vuejs", fieldIconGroup),
+      default: select("name", icons, "vmdi-vuejs", fieldIconGroup),
     },
   },
   template: `<tv-field v-bind="{${Object.keys(props)}}">
-    <tv-field-icon :name="fieldIcon" />
     <tv-textbox/>
   </tv-field>`,
 });

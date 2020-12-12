@@ -7,54 +7,31 @@
     >
       {{ label }}
     </label>
-    <div class="field__set relative flex rounded-md" :class="setClassList">
-      <tv-shimmer class="rounded-md" v-if="loading" />
-      <slot v-else></slot>
+    <div class="field__input">
+      <slot />
     </div>
     <p class="field__note text-sm mt-1" :class="noteClassList">{{ note }}</p>
   </div>
 </template>
 
 <script>
+import dc from "./classlist";
+
 export default {
   props: require("./props").default,
-  inject: ["OPTIONS"],
-  provide() {
-    return {
-      FIELD: {
-        size: this.size,
-        sizeValue: this.fieldSize,
-        color: this.fieldColor,
-        name: this.name
-      }
-    };
-  },
   computed: {
-    setClassList() {
-      const classes = [`bg-${this.fieldColor}-200`, `h-${this.fieldSize}`];
-      return classes;
-    },
-
     noteClassList() {
-      const classes = [];
-      classes.push(`text-${this.fieldColor}-600`);
-      return classes;
+      return [dc.text_x_600[this.color]];
     },
 
     labelClassList() {
-      const labelSizes = this.OPTIONS.fieldLabelSizes;
-      const labelSize = labelSizes[this.size];
-      return [`text-${labelSize}`];
+      const labelSizes = {
+        sm: "text-sm",
+        md: "text-md",
+        lg: "text-md",
+      };
+      return [labelSizes[this.size]];
     },
-
-    fieldColor() {
-      return this.OPTIONS.colors[this.color];
-    },
-
-    fieldSize() {
-      const sizes = this.OPTIONS.fieldSizes;
-      return sizes[this.size];
-    }
-  }
+  },
 };
 </script>

@@ -14,7 +14,7 @@
     #edf2f7 5%,
     #cbd5e0 50%,
     #edf2f7 95%
-  ); //TODO: Storybook Rule. Should be removed once CSS is rendered in Storybook
+  );
   background: linear-gradient(
     to right,
     theme("colors.gray.200") 5%,
