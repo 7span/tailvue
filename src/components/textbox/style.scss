@@ -1,0 +1,75 @@
+$textbox: (
+  colors: (
+    "info",
+    "warning",
+    "success",
+    "danger",
+  ),
+  themes: (
+    "solid",
+    "outline",
+  ),
+  shapes: (
+    "rounded",
+    "pill",
+  ),
+  sizes: (
+    sm: (
+      h: 7,
+      px: 4,
+      text: "xs",
+      iconSize: 4,
+    ),
+    md: (
+      h: 9,
+      px: 4,
+      text: "sm",
+      iconSize: 5,
+    ),
+    lg: (
+      h: 11,
+      px: 4,
+      text: "sm",
+      iconSize: 5,
+    ),
+  ),
+);
+
+.textbox {
+  @apply bg-gray-100;
+}
+
+.textbox__input {
+  @apply bg-transparent w-full h-full;
+}
+
+//Sizes
+@each $size, $options in map-get($textbox, "sizes") {
+  $h: map-get($options, "h");
+  $px: map-get($options, "px");
+  $text: map-get($options, "text");
+  $iconSize: map-get($options, "iconSize");
+
+  //Button Size
+  .textbox--#{$size} {
+    @apply h-#{$h} text-#{$text};
+
+    .textbox__input {
+      @apply px-#{$px};
+    }
+
+    //Icon Size
+    .textbox__icon {
+      @apply h-#{$iconSize} w-#{$iconSize};
+    }
+  }
+}
+
+//Shapes
+.textbox--pill {
+  @apply rounded-full;
+}
+
+.textbox--rounded {
+  @apply rounded-md;
+}

@@ -4,11 +4,11 @@
 
 <script>
 export default {
-  props: require("./props").default
+  props: require("./props").default,
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .loading {
   animation-name: loading;
   animation-iteration-count: infinite;

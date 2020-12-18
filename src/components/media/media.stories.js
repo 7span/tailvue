@@ -3,26 +3,26 @@ import props from "./props";
 
 export default {
   title: "tv-media",
-  decorators: [withKnobs],
+  decorators: [withKnobs]
 };
 
 export const Default = () => ({
   props: {
     value: {
-      default: text("value", "https://via.placeholder.com/150"),
+      default: text("value", "https://via.placeholder.com/150")
     },
     ratio: {
-      default: text("ratio", ""),
+      default: text("ratio", "")
     },
     fit: {
-      default: text("fit", ""),
+      default: text("fit", "")
     },
     position: {
-      default: text("position", ""),
+      default: text("position", "")
     },
     readonly: {
-      default: boolean("readonly", true),
-    },
+      default: boolean("readonly", true)
+    }
   },
-  template: `<tv-media v-bind="{${Object.keys(props)}}"/>`,
+  template: `<tv-media v-bind="{${Object.keys(props)}}"/>`
 });

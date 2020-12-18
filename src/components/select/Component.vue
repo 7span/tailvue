@@ -25,12 +25,8 @@
 </template>
 
 <script>
-import fieldItem from "../../mixins/field-item";
-import dc from "../field/classlist";
-
 export default {
   props: require("./props").default,
-  mixins: [fieldItem],
   methods: {
     input(e) {
       this.$emit("input", e.target.value, {
@@ -40,11 +36,7 @@ export default {
   },
   computed: {
     classList() {
-      return [
-        this.heights[this.$parent.size],
-        this.radius,
-        dc.bg_x_200[this.$parent.color]
-      ];
+      return [this.heights[this.$parent.size], this.radius];
     },
     arrowClassList() {
       return [this.widths[this.$parent.size]];

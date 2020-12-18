@@ -3,17 +3,17 @@ import props from "./props";
 
 export default {
   title: "tv-link",
-  decorators: [withKnobs],
+  decorators: [withKnobs]
 };
 
 export const Default = () => ({
   props: {
     to: {
-      default: text("to", "/home"),
+      default: text("to", "/home")
     },
     href: {
-      text: text("href"),
-    },
+      text: text("href")
+    }
   },
-  template: `<tv-link label="Link" v-bind="{${Object.keys(props)}}"/>`,
+  template: `<tv-link label="Link" v-bind="{${Object.keys(props)}}"/>`
 });

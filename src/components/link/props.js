@@ -1,8 +1,8 @@
 export default {
   to: {
-    type: String,
+    type: String
   },
   href: {
-    type: String,
-  },
+    type: String
+  }
 };

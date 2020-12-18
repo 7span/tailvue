@@ -1,8 +1,8 @@
 <template>
-  <div class="textbox flex items-stretch" :class="classList">
+  <div class="textbox" :class="classList">
     <slot name="before"></slot>
     <input
-      class="input bg-transparent w-full px-3"
+      class="textbox__input"
       :type="type"
       :value="value"
       :name="$parent.name"
@@ -13,28 +13,27 @@
 </template>
 
 <script>
-import fieldItem from "../../mixins/field-item";
-import dc from "../field/classlist";
-
 export default {
   props: require("./props").default,
-  mixins: [fieldItem],
   methods: {
     input(e) {
       this.$emit("input", e.target.value, {
-        value: e.target.value
+        value: e.target.value,
       });
-    }
+    },
   },
+
   computed: {
     classList() {
-      const classes = [
-        this.radius,
-        dc.bg_x_200[this.$parent.color],
-        this.height
+      return [
+        this.size && `textbox--${this.size}`,
+        this.shape && `textbox--${this.shape}`,
       ];
-      return classes;
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+@import "style.scss";
+</style>

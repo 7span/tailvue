@@ -14,4 +14,6 @@ module.exports = {
     "url",
     "week",
   ],
+  size: ["sm", "md", "lg"],
+  shape: ["pill", "rounded"],
 };

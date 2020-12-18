@@ -3,7 +3,7 @@ import {
   select,
   text,
   boolean,
-  optionsKnob as options,
+  optionsKnob as options
 } from "@storybook/addon-knobs";
 import values from "./prop-values";
 import icons from "../../story/icons";
@@ -11,21 +11,21 @@ import props from "./props";
 
 export default {
   title: "tv-button",
-  decorators: [withKnobs],
+  decorators: [withKnobs]
 };
 
 export const Default = () => ({
   props: {
     label: { default: text("label", "Hello Storybook") },
     theme: {
-      default: select("theme", values.theme, props.theme.default),
+      default: select("theme", values.theme, props.theme.default)
     },
     color: {
-      default: select("color", values.color, props.color.default),
+      default: select("color", values.color, props.color.default)
     },
     size: { default: select("size", values.size, props.size.default) },
     shape: {
-      default: select("shape", values.shape, props.shape.default),
+      default: select("shape", values.shape, props.shape.default)
     },
     full: { default: boolean("full", false) },
     icon: { default: select("icon", icons, "vmdi-vuejs") },
@@ -40,13 +40,13 @@ export const Default = () => ({
         }, {}),
         props.align.default,
         {
-          display: "radio",
+          display: "radio"
         }
-      ),
+      )
     },
     disabled: { default: props.disabled.default },
     tag: { default: props.tag.default },
-    type: { default: props.type.default },
+    type: { default: props.type.default }
   },
-  template: `<tv-button v-bind="{${Object.keys(props)}}"/>`,
+  template: `<tv-button v-bind="{${Object.keys(props)}}"/>`
 });

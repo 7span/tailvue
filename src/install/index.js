@@ -8,8 +8,8 @@ const install = (Vue, options) => {
   //Provide Options
   Vue.mixin({
     provide: {
-      OPTIONS: mergedOptions,
-    },
+      OPTIONS: mergedOptions
+    }
   });
   registerIcons(Vue);
   registerComponents(Vue);
@@ -18,7 +18,7 @@ const install = (Vue, options) => {
 //Export Plugin
 const plugin = {
   install,
-  version: "__VERSION__",
+  version: "__VERSION__"
 };
 export default plugin;
 

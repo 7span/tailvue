@@ -1,5 +1,5 @@
 export default {
   rules: {
-    type: [String, Object],
-  },
+    type: [String, Object]
+  }
 };

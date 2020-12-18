@@ -2,19 +2,14 @@
   <div class="shimmer"></div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .shimmer {
   animation-duration: 3s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-name: shimmer;
   animation-timing-function: linear;
-  background: linear-gradient(
-    to right,
-    #edf2f7 5%,
-    #cbd5e0 50%,
-    #edf2f7 95%
-  );
+  background: linear-gradient(to right, #edf2f7 5%, #cbd5e0 50%, #edf2f7 95%);
   background: linear-gradient(
     to right,
     theme("colors.gray.200") 5%,

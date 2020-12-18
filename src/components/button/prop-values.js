@@ -1,7 +1,6 @@
 module.exports = {
-  theme: ["solid", "outline", "muted", "clearDark", "clearLight"],
+  theme: ["solid", "outline", "muted"],
   color: [
-    "none",
     "primary",
     "secondary",
     "warning",
@@ -13,6 +12,6 @@ module.exports = {
     "gray",
   ],
   size: ["xs", "sm", "md", "lg", "xl"],
-  shape: ["rounded", "flat", "pill", "circle"],
-  align: ["center", "left", "right", "icon-right"],
+  shape: ["rounded", "pill", "square", "circle", "squircle"],
+  align: ["left", "right"],
 };

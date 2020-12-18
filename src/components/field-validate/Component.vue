@@ -34,7 +34,7 @@ export default {
         classes.push("text-danger-600");
       }
       return classes;
-    },
-  },
+    }
+  }
 };
 </script>

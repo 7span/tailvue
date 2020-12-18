@@ -1,0 +1,214 @@
+$button: (
+  colors: (
+    "primary",
+    "secondary",
+    "info",
+    "warning",
+    "success",
+    "danger",
+    "gray",
+    "black",
+    "white",
+  ),
+  themes: (
+    "solid",
+    "outline",
+    "muted",
+  ),
+  shapes: (
+    "rounded",
+    "pill",
+    "circle",
+    "square",
+  ),
+  sizes: (
+    xs: (
+      h: 5,
+      px: 3,
+      text: "xs",
+      iconSize: 3,
+    ),
+    sm: (
+      h: 7,
+      px: 4,
+      text: "xs",
+      iconSize: 4,
+    ),
+    md: (
+      h: 9,
+      px: 6,
+      text: "sm",
+      iconSize: 5,
+    ),
+    lg: (
+      h: 11,
+      px: 8,
+      text: "sm",
+      iconSize: 5,
+    ),
+    xl: (
+      h: 14,
+      px: 10,
+      text: "base",
+      iconSize: 6,
+    ),
+  ),
+);
+
+.button {
+  @apply inline-flex items-center select-none relative justify-center;
+  > .button__icon {
+    + .button__label {
+      @apply ml-2;
+    }
+  }
+}
+
+.button__loader {
+  @apply absolute inset-0 m-auto;
+}
+
+.button__label {
+  //@apply font-bold;
+}
+
+//Alignment
+.button--left {
+  @apply justify-start;
+}
+
+.button--right {
+  @apply justify-start flex-row-reverse;
+  > .button__icon {
+    + .button__label {
+      @apply mr-2 ml-0;
+    }
+  }
+}
+
+.button--split {
+  @apply justify-between;
+}
+
+//Colors & Themes
+@each $color in map-get($button, "colors") {
+  //Just Color
+  .button--#{$color} {
+    @if $color== "black" {
+      @apply text-black;
+    } //
+    @else if $color== "white" {
+      @apply text-white;
+    } //
+    @else {
+      @apply text-#{$color}-500 hover:text-#{$color}-600;
+    }
+  }
+
+  @each $theme in map-get($button, "themes") {
+    .button--#{$color}.button--#{$theme} {
+      //Solid
+      @if $theme== "solid" {
+        @if $color== "black" {
+          @apply bg-black;
+          @apply text-white;
+        } //
+        @else if $color== "white" {
+          @apply bg-white;
+          @apply text-black;
+        } //
+        @else {
+          @apply bg-#{$color}-500 hover:bg-#{$color}-600;
+          @apply text-white;
+        }
+      }
+
+      //Outline
+      @else if $theme== "outline" {
+        @apply border;
+
+        @if $color== "black" {
+          @apply border-black;
+          @apply text-black;
+        } //
+        @else if $color== "white" {
+          @apply border-white;
+          @apply text-white;
+        } //
+        @else {
+          @apply border-#{$color}-500 hover:border-#{$color}-500;
+          @apply text-#{$color}-500 hover:text-#{$color}-600;
+        }
+      }
+
+      //Muted
+      @else if $theme== "muted" {
+        @if $color== "black" {
+          @apply border-black;
+          @apply text-black;
+        } //
+        @else if $color== "white" {
+          @apply border-white;
+          @apply text-white;
+        } //
+        @else {
+          @apply bg-#{$color}-50 hover:bg-#{$color}-50;
+          @apply text-#{$color}-500 hover:text-#{$color}-600;
+        }
+      }
+    }
+  }
+}
+
+//Sizes
+@each $size, $options in map-get($button, "sizes") {
+  $h: map-get($options, "h");
+  $px: map-get($options, "px");
+  $text: map-get($options, "text");
+  $iconSize: map-get($options, "iconSize");
+
+  //Button Size
+  .button--#{$size} {
+    @apply h-#{$h} px-#{$px} text-#{$text};
+
+    //Icon Size
+    .button__icon {
+      @apply h-#{$iconSize} w-#{$iconSize};
+    }
+
+    //Shapes
+    &.button--square,
+    &.button--squircle,
+    &.button--circle {
+      @apply w-#{$h};
+    }
+  }
+}
+
+//Shapes
+.button--square,
+.button--circle,
+.button--squircle {
+  @apply px-0;
+  .button__label {
+    @apply hidden ml-0 mr-0;
+  }
+}
+
+.button--circle,
+.button--pill {
+  @apply rounded-full;
+}
+
+.button--rounded,
+.button--squircle {
+  @apply rounded-md;
+}
+
+//Loading
+.button--loading {
+  @apply cursor-not-allowed;
+  > .button__icon {
+    @apply animate-spin;
+  }
+}

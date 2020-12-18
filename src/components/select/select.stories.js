@@ -2,7 +2,7 @@ import { withKnobs, object } from "@storybook/addon-knobs";
 import props from "./props";
 export default {
   title: "tv-select",
-  decorators: [withKnobs],
+  decorators: [withKnobs]
 };
 
 export const Default = () => ({
@@ -11,14 +11,14 @@ export const Default = () => ({
       default: object("options", [
         {
           label: "Hi",
-          value: "hi",
+          value: "hi"
         },
         {
           label: "Hello",
-          value: "hello",
-        },
-      ]),
-    },
+          value: "hello"
+        }
+      ])
+    }
   },
   template: `
   <tv-field label="Select">
@@ -28,5 +28,5 @@ export const Default = () => ({
       </template>
     </tv-select>
   </tv-field>
-  `,
+  `
 });

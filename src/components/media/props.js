@@ -1,19 +1,19 @@
 export default {
   value: {
-    type: String,
+    type: String
   },
   ratio: {
-    type: [String, Object],
+    type: [String, Object]
   },
   fit: {
     type: [String, Object],
-    default: "contain",
+    default: "contain"
   },
   position: {
     type: [String, Object],
-    default: "center",
+    default: "center"
   },
   readonly: {
-    type: Boolean,
-  },
+    type: Boolean
+  }
 };

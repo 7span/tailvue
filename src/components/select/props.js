@@ -1,8 +1,8 @@
 export default {
   value: {
-    type: [String, Number],
+    type: [String, Number]
   },
   options: {
-    type: Array,
-  },
+    type: Array
+  }
 };

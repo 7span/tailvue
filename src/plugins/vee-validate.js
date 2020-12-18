@@ -12,7 +12,7 @@ const rules = { required, email };
 for (let rule in rules) {
   extend(rule, {
     ...rules[rule], // add the rule
-    message: en.messages[rule], // add its message
+    message: en.messages[rule] // add its message
   });
 }
 Vue.component("ValidationProvider", ValidationProvider);

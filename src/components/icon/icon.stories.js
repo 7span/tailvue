@@ -3,23 +3,23 @@ import props from "./props";
 import icons from "../../story/icons";
 export default {
   title: "tv-icon",
-  decorators: [withKnobs],
+  decorators: [withKnobs]
 };
 
 export const Default = () => ({
   props: {
     name: {
-      default: select("Name", icons, "vmdi-vuejs"),
+      default: select("Name", icons, "vmdi-vuejs")
     },
     size: {
-      default: number("Size", props.size.default),
+      default: number("Size", props.size.default)
     },
     title: {
-      default: text("Title", props.title.default),
+      default: text("Title", props.title.default)
     },
     color: {
-      default: color("Color", props.color.default),
-    },
+      default: color("Color", props.color.default)
+    }
   },
-  template: `<tv-icon v-bind="{${Object.keys(props)}}"/>`,
+  template: `<tv-icon v-bind="{${Object.keys(props)}}"/>`
 });

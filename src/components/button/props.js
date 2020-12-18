@@ -3,39 +3,30 @@ import values from "./prop-values";
 export default {
   theme: {
     type: String,
-    default: "solid",
     validator: (value) => {
       return values.theme.includes(value);
     },
   },
   color: {
     type: String,
-    default: "primary",
     validator: (value) => {
       return values.color.includes(value);
     },
   },
   size: {
     type: String,
-    default: "md",
     validator: (value) => {
       return values.size.includes(value);
     },
   },
   shape: {
     type: String,
-    default: "rounded",
     validator: (value) => {
       return values.shape.includes(value);
     },
   },
-  full: {
-    type: Boolean,
-    default: false,
-  },
   align: {
     type: String,
-    default: "center",
     validator: (value) => {
       return values.align.includes(value);
     },
@@ -48,18 +39,13 @@ export default {
     type: String,
     default: "button",
   },
-  square: {
-    type: Boolean,
-    default: false,
+  loadingIcon: {
+    type: String,
+    default: "ri:loader-5-line",
   },
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  loading: Boolean,
+  disabled: Boolean,
+  split: Boolean,
   label: String,
   icon: String,
 };

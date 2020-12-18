@@ -1,20 +1,21 @@
 import Vue from "vue";
 import App from "./App.vue";
-import "@/css/style.scss";
-import TailVue from "./install";
-import tailVueOptions from "./options";
 import VueRouter from "vue-router";
+import TailVue from "./install";
+
+import router from "./router";
+import "@/css/style.scss";
 import "./plugins";
 
+import Props from "@/components/_helpers/Props";
+Vue.component("props", Props);
+
 Vue.use(VueRouter);
-Vue.use(TailVue, tailVueOptions);
+Vue.use(TailVue);
 
 Vue.config.productionTip = false;
-Vue.component("Menu", require("vue-material-design-icons/Menu").default);
 
 new Vue({
   render: (h) => h(App),
-  router: new VueRouter({
-    routes: [],
-  }),
+  router,
 }).$mount("#app");

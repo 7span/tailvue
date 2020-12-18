@@ -1,6 +1,6 @@
 export default {
   size: {
     type: Number,
-    default: 24,
-  },
+    default: 24
+  }
 };
