@@ -6,8 +6,8 @@ $textbox: (
     "danger",
   ),
   themes: (
-    "solid",
     "outline",
+    "underline",
   ),
   shapes: (
     "rounded",
@@ -16,19 +16,19 @@ $textbox: (
   sizes: (
     sm: (
       h: 7,
-      px: 4,
+      px: 3,
       text: "xs",
       iconSize: 4,
     ),
     md: (
       h: 9,
-      px: 4,
+      px: 3,
       text: "sm",
       iconSize: 5,
     ),
     lg: (
       h: 11,
-      px: 4,
+      px: 3,
       text: "sm",
       iconSize: 5,
     ),
@@ -36,11 +36,26 @@ $textbox: (
 );
 
 .textbox {
-  @apply bg-gray-100;
+  @apply bg-gray-200;
+  @apply flex relative;
+  @apply focus-within:ring focus-within:ring-primary-200;
 }
 
 .textbox__input {
-  @apply bg-transparent w-full h-full;
+  @apply bg-transparent h-full w-full flex-shrink flex-grow;
+  @apply focus:outline-none;
+}
+
+.textbox__before,
+.textbox__after {
+  @apply flex items-center text-gray-500;
+}
+
+.textbox__before {
+  @apply pl-3;
+}
+.textbox__after {
+  @apply pr-3;
 }
 
 //Sizes
@@ -50,17 +65,27 @@ $textbox: (
   $text: map-get($options, "text");
   $iconSize: map-get($options, "iconSize");
 
-  //Button Size
   .textbox--#{$size} {
     @apply h-#{$h} text-#{$text};
 
-    .textbox__input {
+    //Input
+    > .textbox__input {
       @apply px-#{$px};
     }
 
     //Icon Size
-    .textbox__icon {
-      @apply h-#{$iconSize} w-#{$iconSize};
+    > .textbox__icon {
+      @apply h-#{$h} w-#{$h};
+      @apply flex items-center justify-center flex-shrink-0;
+      @apply text-gray-500;
+
+      > .icon {
+        @apply h-#{$iconSize} w-#{$iconSize};
+      }
+
+      + .textbox__input {
+        @apply pl-0;
+      }
     }
   }
 }
@@ -72,4 +97,20 @@ $textbox: (
 
 .textbox--rounded {
   @apply rounded-md;
+}
+
+//Themes
+.textbox--underline,
+.textbox--outline {
+  @apply bg-transparent px-0;
+  @apply border-gray-200;
+  @apply focus-within:ring-0 focus-within:border-primary-500;
+}
+
+.textbox--underline {
+  @apply border-b;
+}
+
+.textbox--outline {
+  @apply border;
 }

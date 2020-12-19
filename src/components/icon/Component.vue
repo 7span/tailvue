@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="icon">
     <span class="iconify w-full h-full" :data-icon="name" data-inline="false" />
   </div>
 </template>

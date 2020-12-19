@@ -16,6 +16,12 @@ export default {
       return values.shape.includes(value);
     },
   },
+  theme: {
+    type: String,
+    validator: (value) => {
+      return values.theme.includes(value);
+    },
+  },
   type: {
     type: String,
     default: "text",
@@ -23,4 +29,8 @@ export default {
       return values.type.includes(value);
     },
   },
+  before: String,
+  after: String,
+  beforeIcon: String,
+  afterIcon: String,
 };
