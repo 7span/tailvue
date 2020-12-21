@@ -1,3 +1,3 @@
 module.exports = {
-  state: ["danger", "success"],
+  state: ["info", "warning", "danger", "success"],
 };

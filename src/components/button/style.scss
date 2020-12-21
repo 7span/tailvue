@@ -57,10 +57,13 @@ $button: (
 
 .button {
   @apply inline-flex items-center select-none relative justify-center;
-  > .button__icon {
-    + .button__label {
-      @apply ml-2;
-    }
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-1;
+}
+
+.button__icon {
+  @apply flex justify-center items-center;
+  + .button__label {
+    @apply ml-2;
   }
 }
 
@@ -68,8 +71,29 @@ $button: (
   @apply absolute inset-0 m-auto;
 }
 
-.button__label {
-  //@apply font-bold;
+//Sizes
+@each $size, $options in map-get($button, "sizes") {
+  $h: map-get($options, "h");
+  $px: map-get($options, "px");
+  $text: map-get($options, "text");
+  $iconSize: map-get($options, "iconSize");
+
+  //Button Size
+  .button--#{$size} {
+    @apply h-#{$h} px-#{$px} text-#{$text};
+
+    //Icon Size
+    .icon {
+      @apply h-#{$iconSize} w-#{$iconSize};
+    }
+
+    //Shapes
+    &.button--square,
+    &.button--squircle,
+    &.button--circle {
+      @apply w-#{$h};
+    }
+  }
 }
 
 //Alignment
@@ -79,9 +103,10 @@ $button: (
 
 .button--right {
   @apply justify-start flex-row-reverse;
-  > .button__icon {
+
+  .button__icon {
     + .button__label {
-      @apply mr-2 ml-0;
+      @apply ml-0 mr-2;
     }
   }
 }
@@ -96,12 +121,15 @@ $button: (
   .button--#{$color} {
     @if $color== "black" {
       @apply text-black;
+      @apply focus:ring-gray-200;
     } //
     @else if $color== "white" {
       @apply text-white;
+      @apply focus:ring-gray-200;
     } //
     @else {
       @apply text-#{$color}-500 hover:text-#{$color}-700;
+      @apply focus:ring-#{$color}-200;
     }
   }
 
@@ -160,31 +188,6 @@ $button: (
   }
 }
 
-//Sizes
-@each $size, $options in map-get($button, "sizes") {
-  $h: map-get($options, "h");
-  $px: map-get($options, "px");
-  $text: map-get($options, "text");
-  $iconSize: map-get($options, "iconSize");
-
-  //Button Size
-  .button--#{$size} {
-    @apply h-#{$h} px-#{$px} text-#{$text};
-
-    //Icon Size
-    .button__icon {
-      @apply h-#{$iconSize} w-#{$iconSize};
-    }
-
-    //Shapes
-    &.button--square,
-    &.button--squircle,
-    &.button--circle {
-      @apply w-#{$h};
-    }
-  }
-}
-
 //Shapes
 .button--square,
 .button--circle,
@@ -208,7 +211,4 @@ $button: (
 //Loading
 .button--loading {
   @apply cursor-not-allowed;
-  > .button__icon {
-    @apply animate-spin;
-  }
 }

@@ -1,22 +1,35 @@
 <template>
-  <div class="p-8 grid grid-cols-5">
+  <div class="p-8 flex space-x-8">
     <!-- Colors -->
     <props :values="color" #default="{ value }">
-      <tv-button :color="value" theme="solid" label="Hello" size="md" />
+      <tv-button
+        class="capitalize"
+        :color="value"
+        theme="solid"
+        :label="value || 'default'"
+        size="md"
+      />
     </props>
 
     <!-- Themes -->
     <props :values="theme" #default="{ value }">
-      <tv-button color="primary" :theme="value" label="Hello" size="md" />
+      <tv-button
+        class="capitalize"
+        color="primary"
+        :theme="value"
+        :label="value || 'default'"
+        size="md"
+      />
     </props>
 
     <!-- Sizes -->
-    <props :values="size" #default="{ value }">
+    <props :values="size" #default="{ value, }">
       <tv-button
+        class="capitalize"
         icon="ph:aperture-duotone"
         color="primary"
         theme="solid"
-        label="Hello"
+        :label="`Size - ${value || 'default'}`"
         shape="rounded"
         :size="value"
       />
@@ -35,8 +48,9 @@
     </props>
 
     <!-- Fluid -->
-    <div class="space-y-3">
+    <div class="space-y-3 w-48">
       <tv-button
+        shape="rounded"
         color="primary"
         theme="solid"
         label="Full Width"
@@ -46,6 +60,7 @@
       />
 
       <tv-button
+        shape="rounded"
         color="primary"
         theme="solid"
         label="Left"
@@ -56,6 +71,7 @@
       />
 
       <tv-button
+        shape="rounded"
         color="primary"
         theme="solid"
         label="Right"
@@ -66,6 +82,7 @@
       />
 
       <tv-button
+        shape="rounded"
         color="primary"
         theme="solid"
         label="Right"
@@ -77,6 +94,7 @@
       />
 
       <tv-button
+        shape="rounded"
         color="primary"
         theme="solid"
         label="Right"
@@ -88,6 +106,7 @@
       />
 
       <tv-button
+        shape="rounded"
         color="primary"
         theme="solid"
         label="Loading"

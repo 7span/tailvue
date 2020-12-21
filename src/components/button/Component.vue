@@ -7,11 +7,9 @@
     :disabled="loading"
   >
     <!-- Icon -->
-    <tv-icon
-      v-if="icon"
-      :name="loading ? loadingIcon : icon"
-      class="button__icon"
-    />
+    <div v-if="icon" class="button__icon">
+      <tv-icon :name="loading ? loadingIcon : icon" :spin="loading" />
+    </div>
 
     <!-- Label -->
     <span class="button__label">

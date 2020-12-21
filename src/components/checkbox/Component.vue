@@ -1,6 +1,11 @@
 <template>
   <tv-input v-bind="$attrs">
-    <input class="textbox" :value="value" @input="input($event)" />
+    <input
+      class="checkbox"
+      type="checkbox"
+      :value="value"
+      @input="input($event)"
+    />
   </tv-input>
 </template>
 

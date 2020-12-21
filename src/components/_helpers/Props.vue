@@ -1,8 +1,7 @@
 <template>
   <div class="space-y-2">
     <div v-for="(value, index) in v" :key="index">
-      <p class="text-xs text-gray-500">{{ value }}</p>
-      <slot :value="value" />
+      <slot :value="value" :label="labels && labels[value]" />
     </div>
   </div>
 </template>
@@ -11,6 +10,7 @@
 export default {
   props: {
     values: Array,
+    labels: Object,
   },
   computed: {
     v() {

@@ -21,9 +21,7 @@
       </tv-field>
 
       <tv-field label="Before Label" note="This is note. Please take care!">
-        <tv-textbox size="md" shape="rounded">
-          <template #before>Hello!</template>
-        </tv-textbox>
+        <tv-textbox size="md" shape="rounded" before="Hello" />
       </tv-field>
 
       <tv-field label="Before Icon" optional error="This is error!">
@@ -67,22 +65,70 @@
         label="Before Icon"
         state="warning"
         note="Hey, this is info"
-        message="This is error!"
+        message="This is warning!"
       >
         <tv-textbox size="md" />
+      </tv-field>
+
+      <!-- Select -->
+      <tv-field
+        label="Select"
+        state="danger"
+        note="Hey, this is info"
+        message="This is error!"
+      >
+        <tv-select
+          size="md"
+          after-icon="ph:caret-down-duotone"
+          :options="['hi', 'hello']"
+        />
+      </tv-field>
+
+      <!-- Select Group -->
+      <tv-field
+        label="Select"
+        state="success"
+        note="Hey, this is info"
+        message="This is success message"
+      >
+        <tv-select
+          size="md"
+          after-icon="ph:caret-down-duotone"
+          :option-groups="[
+            {
+              label: 'Hello',
+              options: ['hi', 'how'],
+            },
+            {
+              label: 'Are You?',
+              options: ['are', 'you'],
+            },
+          ]"
+        />
+      </tv-field>
+
+      <!-- Validate -->
+      <tv-field-validate rules="email" label="Select" note="Hey, this is info">
+        <tv-textbox v-model="value" size="md" type="email" />
+      </tv-field-validate>
+
+      <!-- Checkbox -->
+      <tv-field rules="email" label="Select" note="Hey, this is info">
+        <tv-checkbox v-model="value" size="md" type="email" />
       </tv-field>
     </div>
   </div>
 </template>
 
 <script>
-import { size, shape } from "@/components/textbox/prop-values";
+import { size, shape } from "@/components/input/prop-values";
 
 export default {
   data() {
     return {
       size,
       shape,
+      value: null,
     };
   },
 };

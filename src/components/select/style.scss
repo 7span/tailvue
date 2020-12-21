@@ -1,0 +1,10 @@
+.select {
+  @apply bg-transparent appearance-none h-full w-full flex-shrink flex-grow z-10;
+  @apply focus:outline-none;
+
+  + .input__icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

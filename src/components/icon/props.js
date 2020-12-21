@@ -3,4 +3,5 @@ export default {
     type: String,
     required: true,
   },
+  spin: Boolean,
 };

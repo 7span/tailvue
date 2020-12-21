@@ -12,4 +12,17 @@ export default {
       return values.state.includes(value);
     },
   },
+  messageIcon: String,
+  successMessageIcon: {
+    type: String,
+    default: "ph:check-circle-duotone",
+  },
+  dangerMessageIcon: {
+    type: String,
+    default: "ph:warning-circle-duotone",
+  },
+  warningMessageIcon: {
+    type: String,
+    default: "ph:warning-duotone",
+  },
 };

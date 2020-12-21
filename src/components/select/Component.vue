@@ -1,46 +1,80 @@
 <template>
-  <div class="select flex items-stretch" :class="classList">
-    <slot name="before"></slot>
-    <div class="h-100 select__input relative flex justify-end flex-grow">
-      <select
-        class=" absolute inset-0 bg-transparent w-full px-3 appearance-none z-10"
-      >
+  <tv-input v-bind="$attrs">
+    <select class="select">
+      <slot>
+        <!-- Option Group -->
+        <template v-if="optionGroups">
+          <optgroup
+            v-for="(group, index) in finalOptionGroups"
+            :key="`optgroup-${index}`"
+            :label="group.label"
+          >
+            <p>{{ group }}</p>
+            <option
+              v-for="(option, index) in group.options"
+              :key="`option-${index}`"
+              :value="option.value"
+            >
+              {{ option.label }}
+            </option>
+          </optgroup>
+        </template>
+
+        <!-- Options -->
         <option
-          v-for="(option, index) in options"
+          v-else-if="options"
+          v-for="(option, index) in finalOptions"
           :key="`option-${index}`"
           :value="option.value"
         >
           {{ option.label }}
         </option>
-      </select>
-      <div
-        class="select__arrow flex items-center justify-center"
-        :class="arrowClassList"
-      >
-        <tv-icon :size="24" name="vmdi-chevron-down" />
-      </div>
-    </div>
-    <slot name="after"></slot>
-  </div>
+      </slot>
+    </select>
+  </tv-input>
 </template>
 
 <script>
 export default {
+  inheritAttrs: false,
   props: require("./props").default,
+
+  computed: {
+    finalOptions() {
+      return this.optionMaker(this.options);
+    },
+
+    finalOptionGroups() {
+      return this.optionGroups?.map((group) => {
+        group.options = this.optionMaker(group.options);
+        return group;
+      });
+    },
+  },
+
   methods: {
     input(e) {
       this.$emit("input", e.target.value, {
-        value: e.target.value
+        value: e.target.value,
       });
-    }
-  },
-  computed: {
-    classList() {
-      return [this.heights[this.$parent.size], this.radius];
     },
-    arrowClassList() {
-      return [this.widths[this.$parent.size]];
-    }
-  }
+
+    optionMaker(options) {
+      return options?.map((option) => {
+        if (typeof option != "object") {
+          return {
+            label: option,
+            value: option,
+          };
+        } else {
+          return option;
+        }
+      });
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+@import "style.scss";
+</style>

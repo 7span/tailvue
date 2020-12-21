@@ -1,0 +1,116 @@
+$input: (
+  colors: (
+    "info",
+    "warning",
+    "success",
+    "danger",
+  ),
+  themes: (
+    "outline",
+    "underline",
+  ),
+  shapes: (
+    "rounded",
+    "pill",
+  ),
+  sizes: (
+    sm: (
+      h: 7,
+      px: 3,
+      text: "xs",
+      iconSize: 4,
+    ),
+    md: (
+      h: 9,
+      px: 3,
+      text: "sm",
+      iconSize: 5,
+    ),
+    lg: (
+      h: 11,
+      px: 3,
+      text: "sm",
+      iconSize: 5,
+    ),
+  ),
+);
+
+.input {
+  @apply bg-gray-200;
+  @apply flex relative;
+  @apply focus-within:ring-2 focus-within:ring-primary-200 focus-within:ring-offset-1;
+}
+
+.input__before,
+.input__after {
+  @apply flex items-center text-gray-500;
+}
+
+.input__before {
+  @apply pl-3;
+}
+.input__after {
+  @apply pr-3;
+}
+
+//Sizes
+@each $size, $options in map-get($input, "sizes") {
+  $h: map-get($options, "h");
+  $px: map-get($options, "px");
+  $text: map-get($options, "text");
+  $iconSize: map-get($options, "iconSize");
+
+  .input--#{$size} {
+    @apply h-#{$h} text-#{$text};
+
+    //Textbox
+    > .textbox {
+      @apply px-#{$px};
+    }
+    //Select
+    > .select {
+      @apply pl-#{$px};
+    }
+
+    //Icon Size
+    > .input__icon {
+      @apply h-#{$h} w-#{$h};
+      @apply flex items-center justify-center flex-shrink-0;
+      @apply text-gray-500;
+
+      > .icon {
+        @apply h-#{$iconSize} w-#{$iconSize};
+      }
+
+      + .textbox,
+      + .select {
+        @apply pl-0;
+      }
+    }
+  }
+}
+
+//Shapes
+.input--pill {
+  @apply rounded-full;
+}
+
+.input--rounded {
+  @apply rounded-md;
+}
+
+//Themes
+.input--underline,
+.input--outline {
+  @apply bg-transparent px-0;
+  @apply border-gray-200;
+  @apply focus-within:ring-0 focus-within:border-primary-500;
+}
+
+.input--underline {
+  @apply border-b;
+}
+
+.input--outline {
+  @apply border;
+}
