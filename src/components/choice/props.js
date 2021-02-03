@@ -10,21 +10,11 @@ export default {
       return values.size.includes(value);
     },
   },
-  shape: {
-    type: String,
-    validator: (value) => {
-      return values.shape.includes(value);
-    },
-  },
+  shape: String,
   theme: {
     type: String,
     validator: (value) => {
       return values.theme.includes(value);
     },
   },
-
-  before: String,
-  after: String,
-  beforeIcon: String,
-  afterIcon: String,
 };

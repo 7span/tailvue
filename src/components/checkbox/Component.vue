@@ -1,12 +1,12 @@
 <template>
-  <tv-input v-bind="$attrs">
+  <tv-choice v-bind="$attrs">
     <input
       class="checkbox"
       type="checkbox"
       :value="value"
       @input="input($event)"
     />
-  </tv-input>
+  </tv-choice>
 </template>
 
 <script>

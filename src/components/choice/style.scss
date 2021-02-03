@@ -1,0 +1,49 @@
+$choice: (
+  themes: (
+    "outline",
+  ),
+  shapes: (
+    "circle",
+    "squircle",
+  ),
+  sizes: (
+    sm: 3,
+    md: 5,
+    lg: 7,
+  ),
+);
+
+.choice {
+  @apply relative;
+  input {
+    @apply bg-gray-200 absolute inset-0 w-full h-full appearance-none outline-none;
+    @apply focus-within:ring-2 focus-within:ring-primary-200 focus-within:ring-offset-1;
+
+    &:checked {
+      @apply bg-primary-500 text-white;
+      background-size: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9%2020.42l-6.21-6.21l2.83-2.83L9%2014.77l9.88-9.89l2.83%202.83L9%2020.42z%22%20fill%3D%22white%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+    }
+  }
+}
+
+//Sizes
+@each $size, $value in map-get($choice, "sizes") {
+  .choice--#{$size} {
+    @apply h-#{$value} w-#{$value};
+  }
+}
+
+//Shapes
+.choice--squircle {
+  input {
+    @apply rounded-sm;
+  }
+}
+.choice--circle {
+  input {
+    @apply rounded-full;
+  }
+}

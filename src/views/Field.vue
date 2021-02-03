@@ -114,7 +114,7 @@
 
       <!-- Checkbox -->
       <tv-field rules="email" label="Select" note="Hey, this is info">
-        <tv-checkbox v-model="value" size="md" type="email" />
+        <tv-checkbox v-model="value" size="md" shape="circle" />
       </tv-field>
     </div>
   </div>

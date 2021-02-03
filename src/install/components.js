@@ -8,6 +8,7 @@ const components = {
   select: require("../components/select/Component").default,
 
   //WIP
+  choice: require("../components/choice/Component").default,
   checkbox: require("../components/checkbox/Component").default,
 
   //TODO
